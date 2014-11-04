@@ -2,6 +2,8 @@ ActiveAdmin.register Region do
 
   permit_params :name, :description, :parent_id
 
+  filter :name
+  
   sidebar "Optional", only: [:show, :edit] do 
     ul do 
       li link_to "Add sub-region", new_admin_region_path(parent_id: region)
