@@ -3,11 +3,23 @@ ActiveAdmin.register Region do
   permit_params :name, :description, :parent_id
 
   filter :name
-  
+
   sidebar "Optional", only: [:show, :edit] do 
     ul do 
       li link_to "Add sub-region", new_admin_region_path(parent_id: region)
     end
+  end
+
+  index do
+    column :id
+    column :name
+    column :description
+    column :created_at
+    column :updated_at
+    column "Parent" do |region|
+      link_to region.parent.name, admin_region_path(region.parent) if region.parent.present?
+    end
+    actions
   end
 
   show do 
@@ -33,7 +45,11 @@ ActiveAdmin.register Region do
     f.inputs "Details" do 
       f.input :name
       f.input :description, as: :text
-      f.input :parent_id, as: :hidden, input_html: { value: params[:parent_id] }
+      if params[:parent_id].present?
+        f.input :parent_id, as: :hidden, input_html: { value: params[:parent_id] }
+      else
+        f.input :parent_id, as: :hidden
+      end
     end
     f.actions
   end

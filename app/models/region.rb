@@ -1,4 +1,4 @@
 class Region < ActiveRecord::Base
-  has_ancestry
+  has_ancestry orphan_strategy: :destroy
 
 end
