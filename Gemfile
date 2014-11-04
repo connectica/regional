@@ -29,6 +29,8 @@ gem 'spring',        group: :development
 # Authentication gems
 gem 'devise'
 
+gem 'ancestry'
+
 # Active admin
 gem 'activeadmin', github: 'activeadmin'
 
