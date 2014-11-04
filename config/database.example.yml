@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  reconnect: false
+  pool: 5
+  username: developer
+  password:
+  host: localhost
+
+development:
+  <<: *default
+  database: moxyst_development
+
+test:
+  <<: *default
+  database: moxyst_test
+
+production:
+  <<: *default
+  database: moxyst_production
+  username: moxyst
+  password: <%= ENV['MOXYST_DATABASE_PASSWORD'] %>
