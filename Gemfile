@@ -31,6 +31,8 @@ gem 'devise'
 
 gem 'ancestry'
 
+gem 'rails_12factor', group: :production
+
 # Active admin
 gem 'activeadmin', github: 'activeadmin'
 
