@@ -43,6 +43,10 @@ gem 'activeadmin', github: 'activeadmin'
 # gem 'unicorn'
 gem 'puma'
 
+group :development do 
+  gem 'quiet_assets'
+end
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

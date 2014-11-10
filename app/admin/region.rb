@@ -53,15 +53,10 @@ ActiveAdmin.register Region do
 
   form do |f|
     f.inputs "Details" do 
-      f.input :parent_id, as: :select, collection: Region.all
+      f.input :parent_id, as: :select, input_html: { value: params[:parent_id].present? ? params[:parent_id] : nil }, collection: Region.all
       f.input :name
       f.input :kind, as: :select, collection: ["Fylke", "Distrikt", "Kommune", "By/Tettsted", "Bydel", "Gate"]
       f.input :description, as: :text
-      if params[:parent_id].present?
-        f.input :parent_id, as: :hidden, input_html: { value: params[:parent_id] }
-      else
-        f.input :parent_id, as: :hidden
-      end
     end
     f.actions
   end
