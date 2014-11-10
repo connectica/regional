@@ -4,6 +4,7 @@ ActiveAdmin.register Region do
 
 
   filter :name
+  filter :kind, as: :select
 
   sidebar "Optional", only: [:show, :edit] do 
     ul do 
@@ -15,10 +16,14 @@ ActiveAdmin.register Region do
     column :id
     column :name
     column :description
-    column :created_at
-    column :updated_at
+    column :kind do |region|
+      status_tag region.kind
+    end
     column "Parent" do |region|
       link_to region.parent.name, admin_region_path(region.parent) if region.parent.present?
+    end
+    column "Sub-Region" do |region|
+      link_to "Add", new_admin_region_path(parent_id: region)
     end
     actions
   end
