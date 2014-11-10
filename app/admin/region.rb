@@ -34,6 +34,7 @@ ActiveAdmin.register Region do
       row :name
       row :kind
       row :description
+      row :parent
     end
 
     panel "Sub-Region" do 
@@ -42,6 +43,7 @@ ActiveAdmin.register Region do
         column :name
         column :kind
         column :description
+        column :parent
         column "edit" do |children|
           link_to 'edit', edit_admin_region_path(children)
         end
@@ -51,6 +53,7 @@ ActiveAdmin.register Region do
 
   form do |f|
     f.inputs "Details" do 
+      f.input :parent_id, as: :select, collection: Region.all
       f.input :name
       f.input :kind, as: :select, collection: ["Fylke", "Distrikt", "Kommune", "By/Tettsted", "Bydel", "Gate"]
       f.input :description, as: :text
