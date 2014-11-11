@@ -22,6 +22,9 @@ ActiveAdmin.register Region do
     column "Parent" do |region|
       link_to region.parent.name, admin_region_path(region.parent) if region.parent.present?
     end
+    column "Parent Kind" do |region|
+      status_tag region.parent.kind
+    end
     column "Sub-Region" do |region|
       link_to "Add", new_admin_region_path(parent_id: region)
     end
