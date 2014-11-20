@@ -13,6 +13,8 @@ ActiveAdmin.register Region do
   scope("Level 2")  { |regions| regions.where(ancestry_depth: 2) }
   scope("Level 3")  { |regions| regions.where(ancestry_depth: 3) }
   scope("Level 4")  { |regions| regions.where(ancestry_depth: 4) }
+  scope("Level 5")  { |regions| regions.where(ancestry_depth: 5) }
+  scope("Level 6")  { |regions| regions.where(ancestry_depth: 6) }
   
   sidebar "Optional", only: [:show, :edit] do 
     ul do 
