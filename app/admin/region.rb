@@ -5,7 +5,8 @@ ActiveAdmin.register Region do
 
   filter :name
   filter :kind, as: :select
-
+  filter :names_depth_cache
+  
   sidebar "Optional", only: [:show, :edit] do 
     ul do 
       li link_to "Add Sub-Region", new_admin_region_path(parent_id: region)
