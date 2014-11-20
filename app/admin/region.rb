@@ -6,6 +6,13 @@ ActiveAdmin.register Region do
   filter :name
   filter :kind, as: :select
   filter :names_depth_cache
+
+  scope("All")      { |regions| regions.all }
+  scope("Top")      { |regions| regions.where(ancestry_depth: 0) }
+  scope("Level 1")  { |regions| regions.where(ancestry_depth: 1) }
+  scope("Level 2")  { |regions| regions.where(ancestry_depth: 2) }
+  scope("Level 3")  { |regions| regions.where(ancestry_depth: 3) }
+  scope("Level 4")  { |regions| regions.where(ancestry_depth: 4) }
   
   sidebar "Optional", only: [:show, :edit] do 
     ul do 
