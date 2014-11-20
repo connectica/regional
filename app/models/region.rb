@@ -1,5 +1,5 @@
 class Region < ActiveRecord::Base
-  has_ancestry orphan_strategy: :destroy
+  has_ancestry orphan_strategy: :destroy, cache_depth: true
 
   before_save :cache_ancestry
 
